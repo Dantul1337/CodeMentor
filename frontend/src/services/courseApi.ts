@@ -25,3 +25,11 @@ export const createApplication = async (data: {
 
     return response.data;
 };
+
+export const subscribeToPush = async (subscription: PushSubscription) => {
+    return api.post("/push/subscribe", subscription);
+};
+
+export const sendPushNotification = async () => {
+    return api.post("/push/send");
+};

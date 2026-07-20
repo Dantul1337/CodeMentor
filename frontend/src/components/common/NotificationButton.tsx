@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { subscribeToPush, sendPushNotification } from '../../services/courseApi';
 
 const publicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
 
@@ -34,7 +34,7 @@ export default function NotificationButton() {
         applicationServerKey: urlBase64ToUint8Array(publicKey),
       });
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/push/subscribe`, subscription);
+      await subscribeToPush(subscription);
 
       alert('Уведомления подключены 🎉');
     } catch (e) {
@@ -46,7 +46,7 @@ export default function NotificationButton() {
   };
 
   const sendNotification = async () => {
-    await axios.post(`${import.meta.env.VITE_API_URL}/api/push/send`);
+    await sendPushNotification();
   };
 
   return (
