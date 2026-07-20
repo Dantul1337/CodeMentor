@@ -28,3 +28,14 @@ model Application {
 
   createdAt DateTime @default(now())
 }
+
+model PushSubscription {
+  id        Int    @id @default(autoincrement())
+
+  endpoint  String @unique
+
+  p256dh    String
+  auth      String
+
+  createdAt DateTime @default(now())
+}
