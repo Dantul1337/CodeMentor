@@ -9,6 +9,7 @@
 @import "./components/courses-page.css";
 @import "./components/application-form.css";
 @import "./components/install-button.css";
+@import "./components/notification-button.css";
 
 * {
   margin: 0;

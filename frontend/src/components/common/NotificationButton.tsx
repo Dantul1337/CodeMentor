@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { subscribeToPush, sendPushNotification } from '../../services/courseApi';
+
+import './notification-button.css';
 
 const publicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
 
@@ -15,6 +17,23 @@ function urlBase64ToUint8Array(base64String: string) {
 
 export default function NotificationButton() {
   const [loading, setLoading] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const checkSubscription = async () => {
+      if (!('serviceWorker' in navigator)) return;
+
+      const registration = await navigator.serviceWorker.ready;
+
+      const subscription = await registration.pushManager.getSubscription();
+
+      if (subscription) {
+        setEnabled(true);
+      }
+    };
+
+    checkSubscription();
+  }, []);
 
   const subscribe = async () => {
     setLoading(true);
@@ -36,9 +55,12 @@ export default function NotificationButton() {
 
       await subscribeToPush(subscription);
 
-      alert('Уведомления подключены 🎉');
-    } catch (e) {
-      console.error(e);
+      setEnabled(true);
+
+      alert('Уведомления успешно подключены 🎉');
+    } catch (error) {
+      console.error(error);
+
       alert('Ошибка подключения уведомлений');
     } finally {
       setLoading(false);
@@ -46,15 +68,32 @@ export default function NotificationButton() {
   };
 
   const sendNotification = async () => {
-    await sendPushNotification();
+    try {
+      await sendPushNotification();
+
+      alert('Тестовое уведомление отправлено 🚀');
+    } catch (error) {
+      console.error(error);
+
+      alert('Ошибка отправки уведомления');
+    }
   };
 
   return (
-    <div>
-      <button onClick={subscribe} disabled={loading}>
-        {loading ? 'Подключение...' : '🔔 Включить уведомления'}
+    <div className="notification-card">
+      <div className="notification-icon">🔔</div>
+
+      <h2 className="notification-title">Push-уведомления</h2>
+
+      <p className="notification-description">Получайте уведомления о новых курсах, скидках и обновлениях платформы.</p>
+
+      <button className={`notification-button ${enabled ? 'connected' : ''}`} onClick={subscribe} disabled={loading || enabled}>
+        {loading ? 'Подключение...' : enabled ? '✓ Подключено' : 'Включить уведомления'}
       </button>
-      <button onClick={sendNotification}>🚀 Отправить тестовое уведомление</button>
+
+      <button className="notification-button secondary" onClick={sendNotification}>
+        🚀 Отправить тестовое уведомление
+      </button>
     </div>
   );
 }
