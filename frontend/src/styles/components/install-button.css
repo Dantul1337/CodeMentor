@@ -1,0 +1,51 @@
+.install-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.install-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+}
+
+.install-button:active {
+  transform: scale(0.98);
+}
+
+.install-button--installed {
+  background: #16a34a;
+
+  cursor: default;
+
+  box-shadow: none;
+}
+
+.install-button--installed:hover {
+  background: #16a34a;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(12, 209, 18, 0.35);
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
