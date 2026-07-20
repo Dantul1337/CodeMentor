@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { subscribeToPush, sendPushNotification } from '../../services/courseApi';
 
-import './notification-button.css';
-
 const publicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
 
 function urlBase64ToUint8Array(base64String: string) {
