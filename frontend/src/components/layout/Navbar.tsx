@@ -1,72 +1,65 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import Container from "../ui/Container";
-import Button from "../ui/Button";
+import Container from '../ui/Container';
+import Button from '../ui/Button';
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const closeMenu = () => setOpen(false);
+  const navigate = useNavigate();
+  const closeMenu = () => setOpen(false);
 
-    return (
-        <header className="navbar">
-            <Container>
-                <nav className="navbar__content">
+  return (
+    <header className="navbar">
+      <Container>
+        <nav className="navbar__content">
+          <NavLink to="/" className="navbar__logo" onClick={closeMenu}>
+            CodeMentor
+          </NavLink>
 
-                    <NavLink
-                        to="/"
-                        className="navbar__logo"
-                        onClick={closeMenu}
-                    >
-                        CodeMentor
-                    </NavLink>
+          <div className={`navbar__links ${open ? 'active' : ''}`}>
+            <NavLink to="/" onClick={closeMenu}>
+              Главная
+            </NavLink>
 
-                    <div className={`navbar__links ${open ? "active" : ""}`}>
+            <NavLink to="/courses" onClick={closeMenu}>
+              Курсы
+            </NavLink>
 
-                        <NavLink to="/" onClick={closeMenu}>
-                            Главная
-                        </NavLink>
+            <NavLink to="/about" onClick={closeMenu}>
+              Обо мне
+            </NavLink>
 
-                        <NavLink to="/courses" onClick={closeMenu}>
-                            Курсы
-                        </NavLink>
+            <NavLink to="/contact" onClick={closeMenu}>
+              Контакты
+            </NavLink>
 
-                        <NavLink to="/about" onClick={closeMenu}>
-                            Обо мне
-                        </NavLink>
+            <div className="navbar__mobileButton">
+              <Button
+                onClick={() => {
+                  closeMenu();
+                  navigate('/courses');
+                }}>
+                Записаться
+              </Button>
+            </div>
+          </div>
 
-                        <NavLink to="/contact" onClick={closeMenu}>
-                            Контакты
-                        </NavLink>
+          <div className="navbar__desktopButton">
+            <Button onClick={() => navigate('/courses')}>Записаться</Button>
+          </div>
 
-                        <div className="navbar__mobileButton">
-                            <Button>
-                                Записаться
-                            </Button>
-                        </div>
-
-                    </div>
-
-                    <div className="navbar__desktopButton">
-                        <Button>
-                            Записаться
-                        </Button>
-                    </div>
-
-                    <button
-                        className={`navbar__burger ${open ? "active" : ""}`}
-                        onClick={() => setOpen(!open)}
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
-                </nav>
-            </Container>
-        </header>
-    );
+          <button className={`navbar__burger ${open ? 'active' : ''}`} onClick={() => setOpen(!open)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </nav>
+      </Container>
+    </header>
+  );
 };
 
 export default Navbar;
