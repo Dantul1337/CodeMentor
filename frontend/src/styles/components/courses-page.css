@@ -1,28 +1,27 @@
 .courses-page {
-    padding: 80px 0;
+    padding: clamp(60px, 8vw, 80px) 0;
 }
 
 .courses-page h1 {
-    font-size: 48px;
     margin-bottom: 16px;
+
+    font-size: clamp(2.3rem, 6vw, 3rem);
 }
 
 .courses-page p {
-    margin-bottom: 48px;
-    color: var(--color-text);
-}
+    margin-bottom: 40px;
 
-.courses-page__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    color: var(--color-text);
+
+    line-height: 1.7;
 }
 
 .courses-page__search {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
 
     margin-bottom: 40px;
+
     padding: 14px 18px;
 
     border: 1px solid var(--color-border);
@@ -31,45 +30,119 @@
     font-size: 16px;
 }
 
+.courses-page__grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
 .course-page {
     display: grid;
+
     grid-template-columns: 1fr 420px;
+
     gap: 40px;
 
-    padding: 60px 0;
     align-items: start;
+
+    padding: 60px 0;
 }
 
 .course-page__card {
+    padding: 40px;
+
     background: white;
 
     border-radius: 20px;
-
-    padding: 40px;
 
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
 .course-page__card h1 {
-    font-size: 42px;
     margin-bottom: 16px;
+
+    font-size: clamp(2rem, 5vw, 2.6rem);
 }
 
 .course-page__card p {
     color: #555;
-    line-height: 1.7;
+
+    line-height: 1.8;
 }
 
 .course-page__duration {
     margin-top: 32px;
+
     font-size: 18px;
 }
 
 .course-page__price {
     margin-top: 16px;
 
-    color: #2563eb;
+    color: var(--color-primary);
 
-    font-size: 36px;
+    font-size: clamp(2rem, 5vw, 2.3rem);
     font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+
+    .courses-page__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-page {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .courses-page {
+        text-align: center;
+    }
+
+    .courses-page__search {
+        max-width: 100%;
+    }
+
+    .courses-page__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-page {
+        gap: 30px;
+    }
+
+    .course-page__card {
+        padding: 30px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .courses-page {
+        padding: 50px 0;
+    }
+
+    .courses-page p {
+        font-size: 15px;
+    }
+
+    .course-page__card {
+        padding: 22px;
+    }
+
+    .course-page__duration {
+        font-size: 16px;
+    }
+
+    .course-page__price {
+        font-size: 30px;
+    }
+
 }

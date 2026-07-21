@@ -1,28 +1,38 @@
 .application-form {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
-
     display: flex;
     flex-direction: column;
     gap: 18px;
+
+    padding: 40px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
 .application-form h2 {
     margin-bottom: 10px;
+
+    font-size: clamp(1.8rem, 5vw, 2rem);
+
+    text-align: center;
 }
 
 .application-form__input {
+    width: 100%;
+
     padding: 14px 16px;
 
     border: 1px solid #d1d5db;
-
     border-radius: 10px;
 
     font-size: 16px;
 
-    transition: .2s;
+    transition:
+        border-color .2s,
+        box-shadow .2s;
 }
 
 .application-form__input:focus {
@@ -36,10 +46,11 @@
 .application-form__button {
     margin-top: 10px;
 
+    width: 100%;
+
     padding: 15px;
 
     border: none;
-
     border-radius: 10px;
 
     background: #2563eb;
@@ -47,29 +58,86 @@
     color: white;
 
     font-size: 16px;
-
     font-weight: 600;
 
     cursor: pointer;
 
-    transition: .2s;
+    transition:
+        background .2s,
+        transform .2s;
 }
 
 .application-form__button:hover:not(:disabled) {
     background: #1d4ed8;
+
+    transform: translateY(-2px);
 }
 
 .application-form__button:disabled {
     opacity: .7;
+
     cursor: not-allowed;
+
+    transform: none;
 }
 
 .application-form__success {
     color: #16a34a;
+
     font-weight: 600;
+
+    text-align: center;
 }
 
 .application-form__error {
     color: #dc2626;
+
     font-weight: 600;
+
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+
+    .application-form {
+        padding: 36px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .application-form {
+        padding: 28px;
+        border-radius: 18px;
+    }
+
+    .application-form h2 {
+        margin-bottom: 6px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .application-form {
+        padding: 22px;
+        gap: 16px;
+    }
+
+    .application-form__input {
+        padding: 13px 14px;
+        font-size: 15px;
+    }
+
+    .application-form__button {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    .application-form__success,
+    .application-form__error {
+        font-size: 15px;
+    }
+
 }

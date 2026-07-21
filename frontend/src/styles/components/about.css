@@ -1,26 +1,22 @@
 .about {
-    padding: 80px 0;
+    padding: clamp(60px, 8vw, 80px) 0;
 }
 
 .about__header {
     text-align: center;
-
     margin-bottom: 70px;
 }
 
 .about__header h1 {
-    font-size: 52px;
-
+    font-size: clamp(2.3rem, 6vw, 3.25rem);
     margin-bottom: 20px;
 }
 
 .about__header p {
     max-width: 700px;
-
     margin: 0 auto;
 
     color: #475569;
-
     line-height: 1.8;
 }
 
@@ -35,6 +31,7 @@
 
 .about__image img {
     width: 100%;
+    display: block;
 
     border-radius: 20px;
 
@@ -44,7 +41,7 @@
 .about__text h2 {
     margin-bottom: 20px;
 
-    font-size: 36px;
+    font-size: clamp(2rem, 5vw, 2.25rem);
 }
 
 .about__text p {
@@ -88,7 +85,9 @@
 
     box-shadow: 0 10px 25px rgba(0,0,0,.08);
 
-    transition: .3s;
+    transition:
+        transform .3s,
+        box-shadow .3s;
 }
 
 .stat-card:hover {
@@ -128,7 +127,7 @@
 .about__cta h2 {
     margin-bottom: 20px;
 
-    font-size: 40px;
+    font-size: clamp(2rem, 5vw, 2.5rem);
 }
 
 .about__cta p {
@@ -137,4 +136,90 @@
     font-size: 18px;
 
     opacity: .9;
+}
+
+@media (max-width: 1024px) {
+
+    .about__content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .about__image {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .about__text {
+        text-align: center;
+    }
+
+    .about__text ul {
+        align-items: center;
+    }
+
+    .about__stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .about__header {
+        margin-bottom: 50px;
+    }
+
+    .about__content {
+        gap: 40px;
+    }
+
+    .about__text li {
+        font-size: 17px;
+    }
+
+    .about__stats {
+        margin-top: 60px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about__cta {
+        margin-top: 60px;
+        padding: 50px 25px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .about {
+        padding: 50px 0;
+    }
+
+    .about__header p,
+    .about__text p {
+        font-size: 15px;
+    }
+
+    .about__text li {
+        font-size: 16px;
+    }
+
+    .stat-card {
+        padding: 30px 20px;
+    }
+
+    .stat-card h2 {
+        font-size: 34px;
+    }
+
+    .about__cta {
+        padding: 40px 20px;
+    }
+
+    .about__cta p {
+        font-size: 16px;
+    }
+
 }

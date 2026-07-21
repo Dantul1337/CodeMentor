@@ -7,6 +7,10 @@ interface BeforeInstallPromptEvent extends Event {
   }>;
 }
 
+const isIOS = () => {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+};
+
 const InstallButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
@@ -16,6 +20,8 @@ const InstallButton = () => {
       (window.navigator as Navigator & { standalone?: boolean }).standalone === true
     );
   });
+
+  const [showIOSModal, setShowIOSModal] = useState(false);
 
   useEffect(() => {
     const beforeInstallHandler = (event: Event) => {
@@ -51,7 +57,7 @@ const InstallButton = () => {
 
   if (installed) {
     return (
-      <section>
+      <section className="install-section">
         <button className="install-button install-button--installed" disabled>
           ✅ Приложение установлено
         </button>
@@ -59,12 +65,46 @@ const InstallButton = () => {
     );
   }
 
-  if (!deferredPrompt) {
-    return null;
+  if (isIOS()) {
+    return (
+      <>
+        <section className="install-section">
+          <button className="install-button" onClick={() => setShowIOSModal(true)}>
+            📲 Установить приложение
+          </button>
+        </section>
+
+        {showIOSModal && (
+          <div className="install-modal" onClick={() => setShowIOSModal(false)}>
+            <div className="install-modal__content" onClick={(e) => e.stopPropagation()}>
+              <h2>Установка на iPhone</h2>
+
+              <p>
+                1️⃣ Откройте меню <strong>Поделиться</strong>
+              </p>
+
+              <p>
+                2️⃣ Выберите <strong>«На экран Домой»</strong>
+              </p>
+
+              <p>
+                3️⃣ Нажмите <strong>«Добавить»</strong>
+              </p>
+
+              <button className="install-button" onClick={() => setShowIOSModal(false)}>
+                Понятно
+              </button>
+            </div>
+          </div>
+        )}
+      </>
+    );
   }
 
+  if (!deferredPrompt) return null;
+
   return (
-    <section>
+    <section className="install-section">
       <button className="install-button" onClick={handleInstall}>
         📲 Установить приложение
       </button>
