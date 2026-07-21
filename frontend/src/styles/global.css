@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body,
 #root {
@@ -24,9 +28,15 @@ body,
 }
 
 body {
-  font-family: Inter, sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
+    font-family: Inter, sans-serif;
+
+    background: #f8fafc;
+    color: #0f172a;
+
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 a{
@@ -41,22 +51,21 @@ textarea {
 }
 
 .container {
-    width: min(1200px, calc(100% - 48px));
-    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    padding-inline: 24px;
+    margin-inline: auto;
 }
 
 .button {
     border: none;
     cursor: pointer;
-
     padding: 14px 26px;
-
     border-radius: var(--radius);
-
     font-size: 16px;
     font-weight: 600;
-
     transition: .25s;
+    background: transparent;
 }
 
 .button--primary {
@@ -80,25 +89,86 @@ textarea {
     background: #eff6ff;
 }
 
-.button:hover {
-    background: var(--color-primary-dark);
-}
-
 .input {
     width: 100%;
     padding: 14px 18px;
-
-    margin-bottom: 40px;
-
+    margin-bottom: 32px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-
+    background: white;
     font-size: 16px;
     outline: none;
-
     transition: .2s;
 }
 
 .input:focus {
     border-color: var(--color-primary);
+}
+
+img {
+    display: block;
+
+    max-width: 100%;
+
+    height: auto;
+}
+
+svg {
+    display: block;
+}
+
+::selection{
+    background:var(--color-primary);
+
+    color:white;
+}
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f1f5f9;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563eb;
+
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#1d4ed8;
+}
+
+@media (max-width:1024px){
+
+.container{
+    padding-inline:20px;
+}
+
+}
+
+@media (max-width:768px){
+
+.container{
+    padding-inline:16px;
+}
+
+.button{
+    width:100%;
+}
+
+}
+
+@media (max-width:480px){
+
+body{
+    font-size:15px;
+}
+
+.button{
+    padding:14px 18px;
+}
+
 }

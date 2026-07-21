@@ -1,32 +1,72 @@
-import { NavLink } from 'react-router-dom';
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-import Container from '../ui/Container';
-import Button from '../ui/Button';
+import Container from "../ui/Container";
+import Button from "../ui/Button";
 
 const Navbar = () => {
-  return (
-    <header className="navbar">
-      <Container>
-        <nav className="navbar__content">
-          <NavLink to="/" className="navbar__logo">
-            CodeMentor
-          </NavLink>
+    const [open, setOpen] = useState(false);
 
-          <div className="navbar__links">
-            <NavLink to="/">Главная</NavLink>
+    const closeMenu = () => setOpen(false);
 
-            <NavLink to="/courses">Курсы</NavLink>
+    return (
+        <header className="navbar">
+            <Container>
+                <nav className="navbar__content">
 
-            <NavLink to="/about">Обо мне</NavLink>
+                    <NavLink
+                        to="/"
+                        className="navbar__logo"
+                        onClick={closeMenu}
+                    >
+                        CodeMentor
+                    </NavLink>
 
-            <NavLink to="/contact">Контакты</NavLink>
-          </div>
+                    <div className={`navbar__links ${open ? "active" : ""}`}>
 
-          <Button>Записаться</Button>
-        </nav>
-      </Container>
-    </header>
-  );
+                        <NavLink to="/" onClick={closeMenu}>
+                            Главная
+                        </NavLink>
+
+                        <NavLink to="/courses" onClick={closeMenu}>
+                            Курсы
+                        </NavLink>
+
+                        <NavLink to="/about" onClick={closeMenu}>
+                            Обо мне
+                        </NavLink>
+
+                        <NavLink to="/contact" onClick={closeMenu}>
+                            Контакты
+                        </NavLink>
+
+                        <div className="navbar__mobileButton">
+                            <Button>
+                                Записаться
+                            </Button>
+                        </div>
+
+                    </div>
+
+                    <div className="navbar__desktopButton">
+                        <Button>
+                            Записаться
+                        </Button>
+                    </div>
+
+                    <button
+                        className={`navbar__burger ${open ? "active" : ""}`}
+                        onClick={() => setOpen(!open)}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </nav>
+            </Container>
+        </header>
+    );
 };
 
 export default Navbar;
