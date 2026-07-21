@@ -1,225 +1,241 @@
 .about {
-    padding: clamp(60px, 8vw, 80px) 0;
+  padding: clamp(60px, 8vw, 80px) 0;
 }
 
 .about__header {
-    text-align: center;
-    margin-bottom: 70px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .about__header h1 {
-    font-size: clamp(2.3rem, 6vw, 3.25rem);
-    margin-bottom: 20px;
+  font-size: clamp(2.3rem, 6vw, 3.25rem);
+  margin-bottom: 20px;
 }
 
 .about__header p {
-    max-width: 700px;
-    margin: 0 auto;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #475569;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
 
-    color: #475569;
-    line-height: 1.8;
+.about__team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.team-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.team-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #f1f5f9;
+}
+
+.team-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-card__image img {
+  transform: scale(1.04);
+}
+
+.team-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.team-card__content h3 {
+  font-size: 1.4rem;
+  margin: 0 0 4px 0;
+  color: var(--color-text, #1e293b);
+}
+
+.team-card__role {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary, #2563eb);
+  margin-bottom: 12px;
+}
+
+.team-card__content p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .about__content {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-
-    gap: 70px;
-
-    align-items: center;
-}
-
-.about__image img {
-    width: 100%;
-    display: block;
-
-    border-radius: 20px;
-
-    box-shadow: 0 20px 40px rgba(0,0,0,.1);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .about__text h2 {
-    margin-bottom: 20px;
-
-    font-size: clamp(2rem, 5vw, 2.25rem);
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 2.25rem);
 }
 
 .about__text p {
-    margin-bottom: 24px;
-
-    color: #475569;
-
-    line-height: 1.8;
+  margin-bottom: 28px;
+  color: #475569;
+  line-height: 1.8;
 }
 
 .about__text ul {
-    display: flex;
-    flex-direction: column;
-
-    gap: 18px;
-
-    list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  text-align: left;
 }
 
 .about__text li {
-    font-size: 18px;
+  font-size: 18px;
+  color: #334155;
 }
 
 .about__stats {
-    margin-top: 90px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 30px;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 }
 
 .stat-card {
-    padding: 40px 20px;
-
-    text-align: center;
-
-    border-radius: 18px;
-
-    background: white;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
-
-    transition:
-        transform .3s,
-        box-shadow .3s;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .stat-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow: 0 20px 40px rgba(0,0,0,.12);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .stat-card h2 {
-    margin-bottom: 12px;
-
-    font-size: 42px;
-
-    color: var(--color-primary);
+  margin-bottom: 12px;
+  font-size: 42px;
+  color: var(--color-primary, #2563eb);
 }
 
 .stat-card p {
-    color: #64748b;
-
-    line-height: 1.6;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .about__cta {
-    margin-top: 90px;
-
-    padding: 70px 40px;
-
-    border-radius: 24px;
-
-    text-align: center;
-
-    background: linear-gradient(135deg,#2563eb,#1d4ed8);
-
-    color: white;
+  margin-top: 80px;
+  padding: 70px 40px;
+  border-radius: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
 }
 
 .about__cta h2 {
-    margin-bottom: 20px;
-
-    font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 2.5rem);
 }
 
 .about__cta p {
-    margin-bottom: 35px;
-
-    font-size: 18px;
-
-    opacity: .9;
+  margin-bottom: 35px;
+  font-size: 18px;
+  opacity: 0.9;
 }
 
 @media (max-width: 1024px) {
+  .about__team {
+    gap: 24px;
+  }
 
-    .about__content {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .about__image {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .about__text {
-        text-align: center;
-    }
-
-    .about__text ul {
-        align-items: center;
-    }
-
-    .about__stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+  .about__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
+  .about__header {
+    margin-bottom: 40px;
+  }
 
-    .about__header {
-        margin-bottom: 50px;
-    }
+  .about__team {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto 60px auto;
+  }
 
-    .about__content {
-        gap: 40px;
-    }
+  .about__text li {
+    font-size: 17px;
+  }
 
-    .about__text li {
-        font-size: 17px;
-    }
+  .about__stats {
+    margin-top: 60px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    .about__stats {
-        margin-top: 60px;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .about__cta {
-        margin-top: 60px;
-        padding: 50px 25px;
-    }
-
+  .about__cta {
+    margin-top: 60px;
+    padding: 50px 25px;
+  }
 }
 
 @media (max-width: 480px) {
+  .about {
+    padding: 50px 0;
+  }
 
-    .about {
-        padding: 50px 0;
-    }
+  .about__header p,
+  .about__text p {
+    font-size: 15px;
+  }
 
-    .about__header p,
-    .about__text p {
-        font-size: 15px;
-    }
+  .about__text li {
+    font-size: 16px;
+  }
 
-    .about__text li {
-        font-size: 16px;
-    }
+  .stat-card {
+    padding: 30px 20px;
+  }
 
-    .stat-card {
-        padding: 30px 20px;
-    }
+  .stat-card h2 {
+    font-size: 34px;
+  }
 
-    .stat-card h2 {
-        font-size: 34px;
-    }
+  .about__cta {
+    padding: 40px 20px;
+  }
 
-    .about__cta {
-        padding: 40px 20px;
-    }
-
-    .about__cta p {
-        font-size: 16px;
-    }
-
+  .about__cta p {
+    font-size: 16px;
+  }
 }

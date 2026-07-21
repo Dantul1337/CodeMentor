@@ -29,7 +29,7 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink to="/about" onClick={closeMenu}>
-              Обо мне
+              О нас
             </NavLink>
 
             <NavLink to="/contact" onClick={closeMenu}>
