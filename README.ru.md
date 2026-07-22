@@ -109,11 +109,11 @@ flowchart LR
 
     Push["Push-сервис<br/>(Google / Mozilla и т.д.)"]
 
-    UI -->|HTTP-запросы через Axios| API
-    Static -.->|раздаётся как| UI
-    SW <-->|кеширует ресурсы, принимает push| Push
-    API -->|Prisma Client| DB
-    API -->|отправка уведомлений (VAPID)| Push
+    UI -->|"HTTP-запросы через Axios"| API
+    Static -.->|"раздаётся как"| UI
+    SW <-->|"кеширует ресурсы, принимает push"| Push
+    API -->|"Prisma Client"| DB
+    API -->|"отправка уведомлений (VAPID)"| Push
 ```
 
 Frontend и Service Worker раздаются статически с Vercel; Express API и база данных работают независимо на Render и Supabase. Такое разделение позволяет обновлять или масштабировать API, не трогая PWA-оболочку, и наоборот.
