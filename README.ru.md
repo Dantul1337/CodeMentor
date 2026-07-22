@@ -92,11 +92,11 @@ CodeMentor — платформа с каталогом курсов по про
 flowchart LR
     subgraph Client["📱 Клиент (браузер / установленное PWA)"]
         UI["React-приложение"]
-        SW["Service Worker\n(sw.ts)"]
+        SW["Service Worker<br/>(sw.ts)"]
     end
 
     subgraph Vercel["Vercel"]
-        Static["Статическая сборка\n+ manifest.webmanifest"]
+        Static["Статическая сборка<br/>+ manifest.webmanifest"]
     end
 
     subgraph Render["Render"]
@@ -104,16 +104,16 @@ flowchart LR
     end
 
     subgraph Supabase["Supabase"]
-        DB[("PostgreSQL\nчерез Prisma")]
+        DB[("PostgreSQL<br/>через Prisma")]
     end
 
-    Push["Push-сервис\n(Google / Mozilla и т.д.)"]
+    Push["Push-сервис<br/>(Google / Mozilla и т.д.)"]
 
     UI -->|HTTP-запросы через Axios| API
     Static -.->|раздаётся как| UI
     SW <-->|кеширует ресурсы, принимает push| Push
     API -->|Prisma Client| DB
-    API -->|отправка уведомления\n(VAPID)| Push
+    API -->|отправка уведомлений (VAPID)| Push
 ```
 
 Frontend и Service Worker раздаются статически с Vercel; Express API и база данных работают независимо на Render и Supabase. Такое разделение позволяет обновлять или масштабировать API, не трогая PWA-оболочку, и наоборот.
