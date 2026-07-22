@@ -89,11 +89,11 @@ The project is split into two independently deployed services and a hosted Postg
 flowchart LR
     subgraph Client["📱 Client (Browser / Installed PWA)"]
         UI["React App"]
-        SW["Service Worker\n(sw.ts)"]
+        SW["Service Worker<br/>(sw.ts)"]
     end
 
     subgraph Vercel["Vercel"]
-        Static["Static build\n+ manifest.webmanifest"]
+        Static["Static build<br/>+ manifest.webmanifest"]
     end
 
     subgraph Render["Render"]
@@ -101,16 +101,16 @@ flowchart LR
     end
 
     subgraph Supabase["Supabase"]
-        DB[("PostgreSQL\nvia Prisma")]
+        DB[("PostgreSQL<br/>via Prisma")]
     end
 
-    Push["Web Push Service\n(Google / Mozilla / etc.)"]
+    Push["Web Push Service<br/>(Google / Mozilla / etc.)"]
 
-    UI -->|HTTP requests via Axios| API
-    Static -.->|served as| UI
-    SW <-->|caches assets, receives push| Push
-    API -->|Prisma Client| DB
-    API -->|send-notification\n(VAPID)| Push
+    UI -->|"HTTP requests via Axios"| API
+    Static -.->|"served as"| UI
+    SW <-->|"caches assets, receives push"| Push
+    API -->|"Prisma Client"| DB
+    API -->|"send notification (VAPID)"| Push
 ```
 
 The frontend and Service Worker are served statically from Vercel; the Express API and database run independently on Render and Supabase. This separation means the API can be redeployed or scaled without touching the PWA shell, and vice versa.
