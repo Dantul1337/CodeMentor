@@ -317,4 +317,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Author
 
-Built by **[Your Name]** — [GitHub](https://github.com/<your-username>) · [LinkedIn](https://linkedin.com/in/<your-username>)
+Built by **Tulskiy Daniil** — [GitHub](https://github.com/Dantul1337) · [Telegram](@dantul)
